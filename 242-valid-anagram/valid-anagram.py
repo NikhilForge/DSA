@@ -5,17 +5,22 @@ class Solution(object):
         :type t: str
         :rtype: bool
         """
-        b=sorted(s)
-        c=sorted(t)
-        if len(b)!=len(c):
+        if len(s) != len(t):
             return False
-        else:
-            for i in range(len(b)):
-                if b[i]==c[i]:
-                    pass
-                 
-                else:
-                    return False
-            return True
 
+        freq = {}
+
+        for ch in s:
+            freq[ch] = freq.get(ch, 0) + 1
+
+        for ch in t:
+            if ch not in freq:
+                return False
+
+            freq[ch] -= 1
+
+            if freq[ch] < 0:
+                return False
+
+        return True
         
