@@ -1,20 +1,13 @@
-class Solution(object):
-    def removeDuplicates(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: int
-        """
-        if not nums:
-            return 0
-
-        # slow pointer
-        i = 0  
-
-        # fast pointer
-        for j in range(1, len(nums)):
-            if nums[j] != nums[i]:
-                i += 1
-                nums[i] = nums[j]
-
-        return i + 1
+class Solution:
+    def removeDuplicates(self, nums: List[int]) -> int:
+        slow=0
+        fast=1
+        while fast<len(nums):
+            if nums[fast]!=nums[slow]:
+                slow+=1
+                nums[slow]=nums[fast]
+            fast+=1
+        return slow+1
+        
+        
         
